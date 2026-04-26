@@ -21,3 +21,12 @@ python -m streamlit run app.py
 3. Start the quiz
 4. Ace that midterm
 5. Show Anthropic who's the boss.
+
+## How it works
+
+- Questions are weighted based on past performance
+- Incorrectly answered questions are more likely to reappear
+- Progress is stored locally between sessions
+
+## How it looks
+![App Screenshot](screenshot.png)
