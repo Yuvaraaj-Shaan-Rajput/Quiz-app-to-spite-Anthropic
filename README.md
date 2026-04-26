@@ -29,4 +29,8 @@ python -m streamlit run app.py
 - Progress is stored locally between sessions
 
 ## How it looks
-![App Screenshot](screenshot.png)
+<img width="2559" height="916" alt="image" src="https://github.com/user-attachments/assets/0ddd7bc2-9723-44b0-b3cb-ba7d0eae70de" />
+
+
+
+
