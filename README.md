@@ -1,36 +1,89 @@
 # Quiz Practice App
 
-Quiz app born from spite and token scarcity. Anthropic made me independent, one credit limit at a time.
-A Streamlit quiz app for practicing MCQs with weighted question selection based on performance for CSE519, Spring 2026 (or any other course, just update the questions.py with your mirrored dataset)
+> Built out of spite for Anthropic's token limits. When Claude runs out of credits mid-study session, you learn to help yourself.
+
+## What This Is
+
+A Streamlit-based quiz app for practicing MCQs with intelligent question weighting. Got tired of begging Claude for help every time I needed to review material, so I built this instead.
 
 ## Features
-- Multiple topics
-- Tracks which questions you get wrong and shows them more often
-- Progress saved between sessions
-- Multi-select support for questions with multiple answers
+
+- **Adaptive Question Selection**: Questions you struggle with appear more frequently
+- **Performance Tracking**: Stores your accuracy stats locally between sessions
+- **Smart Weighting Algorithm**: 
+  - New questions get priority (weight = 3)
+  - Struggled questions weighted as `1 + (1 - accuracy) * 4`
+- **Multi-Worksheet Support**: Organize questions by topic/worksheet
+- **Multiple Question Types**: Single-choice and multi-select MCQs
+- **Focused Review**: Only shows incorrect answers at the end (no clutter)
+- **Clean Answer Display**: Bullet-pointed formatting for better readability
+
+## How It Works
+
+1. **Question Weighting**: Questions are weighted based on your historical accuracy
+2. **Adaptive Sampling**: Lower accuracy = higher weight = more likely to appear
+3. **Local Progress**: All stats saved to `progress.json` between sessions
+4. **Review Mode**: After completion, review only what you got wrong
+
+No AI required. No token limits. No Drama. Claude can go kick rocks.
 
 ## Setup
+
 ```bash
+# Install dependencies
 pip install streamlit
-python -m streamlit run app.py
+
+# Run the app
+streamlit run final_app.py
 ```
 
 ## Usage
-1. Select a topic from the sidebar
-2. Choose number of questions
+
+1. Select a worksheet from the sidebar (or choose "All")
+2. Choose number of questions (10, 20, 100, or All)
 3. Start the quiz
-4. Ace that midterm
-5. Show Anthropic who's the boss.
-
-## How it works
-
-- Questions are weighted based on past performance
-- Incorrectly answered questions are more likely to reappear
-- Progress is stored locally between sessions
-
-## How it looks
-<img width="2559" height="916" alt="image" src="https://github.com/user-attachments/assets/0ddd7bc2-9723-44b0-b3cb-ba7d0eae70de" />
+4. Review your mistakes and improve
 
 
+**Lesson learned**: If you want something done right (and without arbitrary usage limits), build it yourself.
 
+## Project Structure
+.
+├── final_app.py           # Main quiz application
+├── questions_dataset.py   # Question bank organized by worksheets
+├── progress.json          # Auto-generated stats file (gitignored)
+└── README.md              # You are here
+
+## How the Weighting Works
+
+```python
+# New questions
+weight = 3
+
+# Previously attempted questions
+accuracy = correct_attempts / total_attempts
+weight = 1 + (1 - accuracy) * 4
+
+# Example:
+# 100% accuracy → weight = 1 (rarely appears)
+# 50% accuracy → weight = 3 (moderate frequency)
+# 0% accuracy → weight = 5 (appears very frequently)
+```
+
+## Tech Stack
+
+- **Python 3.x**: Because it works
+- **Streamlit**: Fast prototyping without React nonsense
+- **JSON**: Local storage, no database overhead
+
+## How it Looks
+<img width="2559" height="928" alt="image" src="https://github.com/user-attachments/assets/fbdfbde7-da5a-4c19-9e13-5c48dedd99d5" />
+
+## Contributing
+
+Feel free to fork and improve. If you add features, cool. If you don't, also cool.
+
+## License
+
+MIT License
 
