@@ -47,13 +47,6 @@ streamlit run final_app.py
 
 **Lesson learned**: If you want something done right (and without arbitrary usage limits), build it yourself.
 
-## Project Structure
-.
-├── final_app.py           # Main quiz application
-├── questions_dataset.py   # Question bank organized by worksheets
-├── progress.json          # Auto-generated stats file (gitignored)
-└── README.md              # You are here
-
 ## How the Weighting Works
 
 ```python
